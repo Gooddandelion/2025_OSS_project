@@ -1,12 +1,192 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sunglim Park — Backend & Data (Java)</title>
+  <meta name="description" content="Developer sample page for a Java-focused backend & data student." />
+  <style>
+    /* ---- Design Tokens ---- */
+    :root {
+      --bg: #f7f7f8;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --line: #e5e7eb;
+      --accent: #111827;
+      --chip-bg: #f1f5f9;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg:#0b0f14; --card:#11161c; --text:#e6edf3; --muted:#94a3b8; --line:#1f2833; --accent:#e6edf3; --chip-bg:#0f1720; }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;
+      background: var(--bg); color: var(--text); line-height: 1.6;
+    }
+    .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px; }
+    .row { display: grid; gap: 20px; }
+    .row.cols-3 { grid-template-columns: repeat(1, minmax(0,1fr)); }
+    .row.cols-2 { grid-template-columns: repeat(1, minmax(0,1fr)); }
+    @media (min-width: 860px){ .row.cols-3{ grid-template-columns: repeat(3, 1fr);} .row.cols-2{ grid-template-columns: repeat(2, 1fr);} }
+
+    /* Header */
+    header { display:flex; flex-wrap:wrap; gap:16px; align-items:center; justify-content:space-between; margin-bottom:28px; }
+    .title { font-weight:800; letter-spacing:-0.02em; font-size: clamp(24px, 2.8vw, 36px); margin:0; }
+    .subtitle { margin: 6px 0 0; color: var(--muted); }
+    .pill { display:inline-flex; gap:8px; align-items:center; padding:10px 14px; border:1px solid var(--line); border-radius:999px; text-decoration:none; color:inherit; background:var(--card); }
+    .pill:hover { background: var(--chip-bg); }
+
+    /* Cards */
+    .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px; }
+    h2 { margin:0 0 10px; font-size: 18px; letter-spacing: .2px; }
+    h3 { margin:0 0 8px; font-size: 16px; }
+    .muted { color: var(--muted); font-size: 14px; }
+    ul.clean { list-style: none; padding-left: 0; margin: 0; }
+    ul.bullets { padding-left: 18px; margin:0; }
+
+    /* Chips */
+    .chips { display:flex; flex-wrap: wrap; gap:8px; }
+    .chip { background: var(--chip-bg); border: 1px solid var(--line); padding:4px 10px; border-radius: 999px; font-size:12px; white-space:nowrap; }
+
+    /* Projects */
+    .projects { display:grid; gap:16px; grid-template-columns: repeat(1, minmax(0,1fr)); }
+    @media (min-width: 860px){ .projects{ grid-template-columns: repeat(2, 1fr);} }
+    .project { display:block; color:inherit; text-decoration:none; }
+    .project:hover .project-title { text-decoration: underline; }
+    .project .meta { font-size: 12px; color: var(--muted); margin-bottom: 6px; }
+
+    /* Footer */
+    footer { margin-top: 28px; padding-top: 20px; border-top:1px solid var(--line); color: var(--muted); font-size:12px; }
+
+    /* Nice little container shadows on big screens */
+    @media (min-width: 860px){ .card { box-shadow: 0 1px 0 rgba(0,0,0,.03); } }
+  </style>
 </head>
 <body>
-    <h1>Hello world!!</h1>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1 class="title">Heonil Park</h1>
+        <p class="subtitle">Backend & Data Developer (Java) · Pohaong, KR</p>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap">
+        <a class="pill" href="https://github.com/Gooddandelion" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="pill" href="mailto:22100324@hadnog.ac.kr">Contact</a>
+      </div>
+    </header>
+
+    <!-- Intro / Goals / Timeline -->
+    <section class="row cols-3" aria-label="Intro">
+      <div class="card">
+        <h2>Focus</h2>
+        <p class="muted">2nd‑year undergrad focused on building reliable backend services and practical data workflows. I enjoy Java, SQL, and turning messy data into useful features.</p>
+      </div>
+      <div class="card">
+        <h2>Goals</h2>
+        <ul class="bullets">
+          <li><strong>Solid CS Fundamentals</strong> — OS, networks, DS/A with hands‑on Java.</li>
+          <li><strong>Backend Craft</strong> — Spring, REST, testing, CI/CD, observability.</li>
+          <li><strong>Data Fluency</strong> — SQL, ETL, modeling, and basic analytics.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Timeline</h2>
+        <ul class="clean">
+          <li><strong>2025 (Now)</strong> — 2nd year 2nd semester; learning Spring Boot + SQL</li>
+          <li><strong>2025 Summer</strong> — Shipped console CRUD (SQLite) and JDBC + MySQL</li>
+          <li><strong>2024–2025</strong> — Explored LLM + embeddings + Streamlit</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="card" style="margin-top:20px" aria-label="Skills">
+      <h2>Skills</h2>
+      <div class="row cols-3" style="margin-top:10px">
+        <div class="card">
+          <h3>Core (Java)</h3>
+          <div class="chips">
+            <span class="chip">Java</span><span class="chip">OOP</span><span class="chip">Collections</span><span class="chip">JDBC</span><span class="chip">Gradle/Maven</span><span class="chip">JUnit</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Backend</h3>
+          <div class="chips">
+            <span class="chip">Spring Boot</span><span class="chip">REST API</span><span class="chip">Auth (JWT)</span><span class="chip">Error Handling</span><span class="chip">Logging</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Data</h3>
+          <div class="chips">
+            <span class="chip">SQL</span><span class="chip">SQLite</span><span class="chip">MySQL</span><span class="chip">Schema Design</span><span class="chip">ETL basics</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Tools</h3>
+          <div class="chips">
+            <span class="chip">Git & GitHub</span><span class="chip">CLI</span><span class="chip">IntelliJ IDEA</span><span class="chip">Docker (basics)</span><span class="chip">Notion</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Currently Learning</h3>
+          <div class="chips">
+            <span class="chip">Spring Data JPA</span><span class="chip">Query optimization</span><span class="chip">AWS basics</span><span class="chip">Kafka (intro)</span><span class="chip">Python for data</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Study Plan</h3>
+          <ul class="bullets">
+            <li>Build a Spring Boot REST API with MySQL (JPA)</li>
+            <li>Automated testing (JUnit + Testcontainers)</li>
+            <li>Basic containerization (Docker) and logs/metrics</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section style="margin-top:20px" aria-label="Projects">
+      <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:8px">
+        <h2 style="margin:0">Projects</h2>
+      </div>
+      <div class="projects">
+        <a class="card project" href="https://github.com/Gooddandelion/project3_22100324_heonil" target="_blank" rel="noreferrer">
+          <div class="meta">2025 · Java, SQLite, CRUD, MVC, DAO</div>
+          <div class="project-title"><strong>Gym Member Manager (Console)</strong></div>
+          <p class="muted">Console‑based CRUD app with input validation and a layered architecture (MVC + DAO).</p>
+          <div class="chips"><span class="chip">Java</span><span class="chip">SQLite</span><span class="chip">CRUD</span></div>
+        </a>
+        <a class="card project" href="https://github.com/Gooddandelion/project4_22100324_heonil" target="_blank" rel="noreferrer">
+          <div class="meta">2025 · Java, MySQL, JDBC</div>
+          <div class="project-title"><strong>Java CRUD with MySQL (JDBC)</strong></div>
+          <p class="muted">Connected Java program to MySQL via JDBC; reinforced exceptions and validation for stability.</p>
+          <div class="chips"><span class="chip">Java</span><span class="chip">MySQL</span><span class="chip">JDBC</span></div>
+        </a>
+        <a class="card project" href="https://github.com/Gooddandelion/LLM_model_2025winter" target="_blank" rel="noreferrer">
+          <div class="meta">2025 · Python, Streamlit, Embeddings</div>
+          <div class="project-title"><strong>Facility Guide AI Chatbot (LLM)</strong></div>
+          <p class="muted">LLM + vector embeddings Q&A over facility information, delivered as a simple Streamlit app.</p>
+          <div class="chips"><span class="chip">Python</span><span class="chip">LLM</span><span class="chip">Streamlit</span></div>
+        </a>
+        <a class="card project" href="https://github.com/2024OSS/2025s-java-programming-camp-G" target="_blank" rel="noreferrer">
+          <div class="meta">2025 · Java, Study</div>
+          <div class="project-title"><strong>Java Programming Camp — Review Notes</strong></div>
+          <p class="muted">Study repo collecting Java practice, notes, and algorithm examples from a programming camp.</p>
+          <div class="chips"><span class="chip">Java</span><span class="chip">Algorithms</span></div>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© <span id="year"></span> Heonil Park. Built with semantic HTML & modern CSS. Dark‑mode friendly.</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
