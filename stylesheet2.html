@@ -6,9 +6,9 @@
     <title>Document</title>
     <style>
         body {
-            font: 100% Lucida Sans, Verdana;
-            margin: 20px;
-            line-height: 26px;
+            font-family: Arial;
+            background-color: #d14836;
+            line-height: 20px;
         }
 
         .container {
@@ -20,107 +20,93 @@
             overflow: auto;
         }
 
-        #top, #sidebar, #bottom, .menuitem {
-            border-radius: 4px;
-            margin: 4px;
-        }
-
         #top {
-            background-color: #04aa6d;
             color: #ffffff;
             padding: 15px;
+            font-size: 30px;
+            line-height: 26px;
         }
 
+        #top h1 {
+            margin:0;
+            line-height: 50px;
+        }
+
+
         #menubar {
-            width: 200px;
-            float: left
+            width: 190px;
+            float: right
         }
 
         #main {
             padding: 10px;
-            margin: 0 210px;
+            background-color: #ffffff;
+            font: 80% Verdana
+        }
+
+        #main h1, #main h2 {
+            color: #d14836;
         }
 
         #sidebar {
-            background-color: #32a4e7;
-            color: #ffffff;
+            background-color: #F6DAD7;
+            color: #d14836;
             padding: 10px;
-            width: 180px;
-            bottom: 0;
-            top: 0;
-            right: 0;
-            position: absolute;
         }
 
         #bottom {
-            border: 1px solid #d4d4d4;
-            background-color: #f1f1f1;
             text-align: center;
             padding: 10px;
             font-size: 70%;
-            line-height: 14px;
+            color: #ffffff;
         }
 
-        #top h1, #top p, #menulist {
-            margin: 0;
+        #menulist {
             padding: 0;
+            font: 16px Verdana;
         }
 
         .menuitem {
-            background-color: #f1f1f1;
-            border: 1px solid #d4d4d4;
+            width: 155px;
+            background-color: #d14836;
+            border: 1px solid #d14836;
+            border-radius: 40px;
+            color: #ffffff;
             list-style-type: none;
-            padding: 2px;
+            margin: 10px;
+            padding: 5px;
+            text-align: center;
             cursor: pointer;
+        }
+
+        .menuitem:nth-child(2) {
+            background-color: white;
+            color: #d14836;
+            font-weight:bold;
         }
 
         .menuitem:hover {
             background-color: #ffffff;
-        }
-
-        .menuitem:first-child {
-            background-color: #04AA6d;
-            color: white;
-            font-weight:bold;
+            color: #d14836;
         }
 
         a {
-            color: #000000;
-            text-decoration: underline;
-        }
-
-        a:hover {
+            color: #d14836;
             text-decoration: none;
         }
 
-        @media (max-width: 800px) {
-            #sidebar{
-                width: auto;
-                position: relative;
-            }
-
-            #main {
-                margin-right: 0;
-            }
-        }
-
-        @media (max-width: 600px){
-            #menubar {
-                width: auto;
-                float: none;
-            }
-            #main {
-                margin: 0;
-            }
+        a:hover {
+            text-decoration: underline;
         }
 
         .nodeco {
             text-decoration: none;
+            color:#ffffff;
         }
 
         .nodecoselected {
             text-decoration: none;
-            color:#ffffff;
+            
         }
 
 
@@ -135,8 +121,8 @@
         <div class="wrapper">
             <div id="menubar">
                 <ul id="menulist">
-                    <li class="menuitem" onclick="reStyle(0)"><a href="./stylesheet1.html" class="nodecoselected">Stylesheet 1</a></li>
-                    <li class="menuitem" onclick="reStyle(1)"><a href="./stylesheet2.html" class="nodeco">Stylesheet 2</a></li>
+                    <li class="menuitem" onclick="reStyle(0)"><a href="./stylesheet1.html" class="nodeco">Stylesheet 1</a></li>
+                    <li class="menuitem" onclick="reStyle(1)"><a href="./stylesheet2.html" class="nodecoselected">Stylesheet 2</a></li>
                     <li class="menuitem" onclick="reStyle(2)">Stylesheet 3</li>
                     <li class="menuitem" onclick="reStyle(3)">Stylesheet 4</li>
                     <li class="menuitem" onclick="noStyle()"><a href="./Nostylesheet.html" class="nodeco">No Stylesheet</a></li>
@@ -145,7 +131,7 @@
             <div id="main">
                 <h1>Same Page Different Stylesheets</h1>
 
-                  <p>This is a demonstration of how different stylesheets can change the layout of your HTML page. 
+                <p>This is a demonstration of how different stylesheets can change the layout of your HTML page. 
                     You can change the layout of this page by selecting different stylesheets in the menu, or by selecting one of the following links:<br>
                     <a href="./stylesheet1.html" onclick="reStyle(0);return false">Stylesheet1</a>, 
                     <a href="./stylesheet2.html" onclick="reStyle(1);return false">Stylesheet2</a>, 
